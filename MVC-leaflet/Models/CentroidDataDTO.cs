@@ -1,4 +1,4 @@
-﻿namespace MVC_leaflet.DB
+﻿namespace MVC_leaflet.Models
 {
     /// <summary>
     /// AW_VIETA_CENTROIDS
@@ -25,7 +25,7 @@
         /// <summary>
         /// NOSAUKUMS
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// VKUR_CD
