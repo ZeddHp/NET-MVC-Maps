@@ -1,11 +1,13 @@
-﻿namespace MVC_leaflet.Models
+﻿using MVC_leaflet.Enums;
+
+namespace MVC_leaflet.Models
 {
     /// <summary>
     /// AW_VIETA_CENTROIDS
     /// This table is referenced in section 2.2.17 of the documentation.
     /// Documentation Link: https://www.vzd.gov.lv/lv/media/6149/download?attachment 
     /// </summary>
-    public class CentroidDataDTO
+    public class CentroidDataDto
     {
         /// <summary>
         /// Centroid Id
@@ -20,7 +22,7 @@
         /// <summary>
         /// TIPS_CD
         /// </summary>
-        public int TypeCD { get; set; }
+        public AddressObjectTypeEnum TypeCD { get; set; }
 
         /// <summary>
         /// NOSAUKUMS
@@ -35,12 +37,12 @@
         /// <summary>
         /// VKUR_TIPS
         /// </summary>
-        public int AddressObjectTypeCode { get; set; }
+        public AddressObjectTypeEnum AddressObjectTypeCode { get; set; }
 
         /// <summary>
         /// STD
         /// </summary>
-        public string AddressObjectDescription { get; set; }
+        public string? AddressObjectDescription { get; set; }
 
         /// <summary>
         /// KOORD_X
