@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using MVC_leaflet.DB;
 
 namespace MVC_leaflet

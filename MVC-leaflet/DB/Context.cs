@@ -8,8 +8,8 @@ namespace MVC_leaflet.DB
         {
         }
         public DbSet<Place> Places { get; set; }
-        
-        
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer
