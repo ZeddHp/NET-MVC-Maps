@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_leaflet.DB;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+string path = Directory.GetCurrentDirectory();
+
+
+builder.Services.AddDbContext<PlaceDBContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+        .Replace("[DataDirectory]", path)));
 
 var app = builder.Build();
 
