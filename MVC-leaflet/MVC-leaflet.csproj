@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="App\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
 
 </Project>

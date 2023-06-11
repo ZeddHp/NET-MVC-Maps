@@ -4,3 +4,6 @@
 
 /MVC-leaflet/App_Data/PlaceDB.mdf
 /MVC-leaflet/App_Data/PlaceDB_log.ldf
+/MVC-leaflet/bin
+/MVC-leaflet/obj
+/MVC-leaflet/wwwroot
