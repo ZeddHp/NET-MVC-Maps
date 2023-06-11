@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
+    <Folder Include="App\" />
   </ItemGroup>
 
 </Project>

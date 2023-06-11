@@ -14,7 +14,7 @@ namespace MVC_leaflet.DB
         {
             optionsBuilder.UseSqlServer
             (
-                @"Server=(localdb)\local;Database=PlaceDB;Trusted_Connection=True;"
+                @"Server=localhost\SQLEXPRESS;Database=PlaceDB;Trusted_Connection=True;Encrypt=False"
             );
         }
     }
