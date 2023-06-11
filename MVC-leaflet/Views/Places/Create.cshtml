@@ -1,0 +1,78 @@
+﻿@model MVC_leaflet.DB.Place
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Place</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeCD" class="control-label"></label>
+                <input asp-for="TypeCD" class="form-control" />
+                <span asp-validation-for="TypeCD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressObjectCode" class="control-label"></label>
+                <input asp-for="AddressObjectCode" class="form-control" />
+                <span asp-validation-for="AddressObjectCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressObjectTypeCode" class="control-label"></label>
+                <input asp-for="AddressObjectTypeCode" class="form-control" />
+                <span asp-validation-for="AddressObjectTypeCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressObjectDescription" class="control-label"></label>
+                <input asp-for="AddressObjectDescription" class="form-control" />
+                <span asp-validation-for="AddressObjectDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentroidXCoordinate" class="control-label"></label>
+                <input asp-for="CentroidXCoordinate" class="form-control" />
+                <span asp-validation-for="CentroidXCoordinate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentroidYCoordinate" class="control-label"></label>
+                <input asp-for="CentroidYCoordinate" class="form-control" />
+                <span asp-validation-for="CentroidYCoordinate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentroidDDECoordinate" class="control-label"></label>
+                <input asp-for="CentroidDDECoordinate" class="form-control" />
+                <span asp-validation-for="CentroidDDECoordinate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentroidDDNCoordinate" class="control-label"></label>
+                <input asp-for="CentroidDDNCoordinate" class="form-control" />
+                <span asp-validation-for="CentroidDDNCoordinate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

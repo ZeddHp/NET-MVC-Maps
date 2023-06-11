@@ -11,9 +11,9 @@ namespace MVC_leaflet.Controllers
 {
     public class PlacesController : Controller
     {
-        private readonly PlaceDBContext _context;
+        private readonly Context _context;
 
-        public PlacesController(PlaceDBContext context)
+        public PlacesController(Context context)
         {
             _context = context;
         }
@@ -21,20 +21,20 @@ namespace MVC_leaflet.Controllers
         // GET: Places
         public async Task<IActionResult> Index()
         {
-            return _context.Place != null ?
-                        View(await _context.Place.ToListAsync()) :
+            return _context.Places != null ?
+                        View(await _context.Places.ToListAsync()) :
                         Problem("Entity set 'PlaceDBContext.Place'  is null.");
         }
 
         // GET: Places/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Place == null)
+            if (id == null || _context.Places == null)
             {
                 return NotFound();
             }
 
-            var place = await _context.Place
+            var place = await _context.Places
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (place == null)
             {
@@ -69,12 +69,12 @@ namespace MVC_leaflet.Controllers
         // GET: Places/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Place == null)
+            if (id == null || _context.Places == null)
             {
                 return NotFound();
             }
 
-            var place = await _context.Place.FindAsync(id);
+            var place = await _context.Places.FindAsync(id);
             if (place == null)
             {
                 return NotFound();
@@ -120,12 +120,12 @@ namespace MVC_leaflet.Controllers
         // GET: Places/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Place == null)
+            if (id == null || _context.Places == null)
             {
                 return NotFound();
             }
 
-            var place = await _context.Place
+            var place = await _context.Places
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (place == null)
             {
@@ -140,14 +140,14 @@ namespace MVC_leaflet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Place == null)
+            if (_context.Places == null)
             {
                 return Problem("Entity set 'PlaceDBContext.Place'  is null.");
             }
-            var place = await _context.Place.FindAsync(id);
+            var place = await _context.Places.FindAsync(id);
             if (place != null)
             {
-                _context.Place.Remove(place);
+                _context.Places.Remove(place);
             }
 
             await _context.SaveChangesAsync();
@@ -156,7 +156,7 @@ namespace MVC_leaflet.Controllers
 
         private bool PlaceExists(int id)
         {
-            return (_context.Place?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Places?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

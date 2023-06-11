@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MVC_leaflet.DB.Place>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeCD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressObjectCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressObjectTypeCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressObjectDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroidXCoordinate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroidYCoordinate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroidDDECoordinate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroidDDNCoordinate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeCD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressObjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressObjectTypeCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressObjectDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroidXCoordinate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroidYCoordinate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroidDDECoordinate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroidDDNCoordinate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script src="~/lib/leaflet/leaflet.js"></script>
+<script src="~/lib/leaflet/leaflet.min.js"></script>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+<script>
+    var map = L.map('map').setView([56.946285, 24.105078], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '      
+    }).addTo(map);
+    
+</script>

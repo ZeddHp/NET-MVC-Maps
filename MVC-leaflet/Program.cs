@@ -7,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 string path = Directory.GetCurrentDirectory();
 
-
-builder.Services.AddDbContext<PlaceDBContext>(options =>
+builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
         .Replace("[DataDirectory]", path)));
