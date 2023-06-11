@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MVC-leaflet/App_Data/PlaceDB.mdf
+/MVC-leaflet/App_Data/PlaceDB_log.ldf

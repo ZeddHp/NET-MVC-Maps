@@ -23,7 +23,7 @@ namespace MVC_leaflet.Controllers
         {
             return _context.Places != null ?
                         View(await _context.Places.ToListAsync()) :
-                        Problem("Entity set 'PlaceDBContext.Place'  is null.");
+                        Problem("Entity set 'Context.Places'  is null.");
         }
 
         // GET: Places/Details/5
@@ -142,7 +142,7 @@ namespace MVC_leaflet.Controllers
         {
             if (_context.Places == null)
             {
-                return Problem("Entity set 'PlaceDBContext.Place'  is null.");
+                return Problem("Entity set 'Context.Places'  is null.");
             }
             var place = await _context.Places.FindAsync(id);
             if (place != null)
