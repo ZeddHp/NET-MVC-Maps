@@ -50,7 +50,7 @@ namespace MVC_leaflet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,TypeCD,Name,AddressObjectCode,AddressObjectTypeCode,AddressObjectDescription,CentroidXCoordinate,CentroidYCoordinate,CentroidDDECoordinate,CentroidDDNCoordinate")] Place place)
+        public async Task<IActionResult> Create([Bind("Id,Code,Type,Name,LocationCode,LocationType,GeoAddress,Long,Lat,DDE,DDN")] Place place)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace MVC_leaflet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,TypeCD,Name,AddressObjectCode,AddressObjectTypeCode,AddressObjectDescription,CentroidXCoordinate,CentroidYCoordinate,CentroidDDECoordinate,CentroidDDNCoordinate")] Place place)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Type,Name,LocationCode,LocationType,GeoAddress,Long,Lat,DDE,DDN")] Place place)
         {
             if (id != place.Id)
             {

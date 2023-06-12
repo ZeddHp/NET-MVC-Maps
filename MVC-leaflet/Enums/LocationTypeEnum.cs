@@ -10,7 +10,7 @@ namespace MVC_leaflet.Enums
     /// <para> Documentation Link: https://www.vzd.gov.lv/lv/media/6149/download?attachment </para>
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum AddressObjectTypeEnum
+    public enum LocationTypeEnum
     {
         /// <summary>
         /// Latvijas Republika

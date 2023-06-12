@@ -18,10 +18,12 @@ namespace MVC_leaflet
 
             string path = Directory.GetCurrentDirectory();
 
+
+            string connectionString = Configuration.GetConnectionString("DefaultConnection")
+                .Replace("[DataDirectory]", $"{path}{Path.DirectorySeparatorChar}");
+
             services.AddDbContext<Context>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")
-                    .Replace("[DataDirectory]", path)));
+                options.UseSqlServer(connectionString));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

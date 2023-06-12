@@ -290,3 +290,4 @@ C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\refint\MVC-
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\MVC-leaflet.pdb
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\MVC-leaflet.genruntimeconfig.cache
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\ref\MVC-leaflet.dll
+C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\CsvHelper.dll

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "gHoqUVJFY/nFPXunxvtwm6H9508eH17De+/lAJsmit3wExfS9Ex463fkRQWtLG5opZ1w9CIZ70TvQi46nWPJwQ==",
+  "dgSpecHash": "7bmm3V4sYSSjoTyACccWUldeyYLsnalpxx262a2TomNwzqBYt2aP41kV/htLmrzkuCygz8vTrbgJ9DRMPmacAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\valte\\source\\repos\\MVC-leaflet\\MVC-leaflet\\MVC-leaflet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\valte\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\valte\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\valte\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\valte\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",
     "C:\\Users\\valte\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\valte\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

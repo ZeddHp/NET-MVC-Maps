@@ -22,46 +22,46 @@ namespace MVC_leaflet.Models
         /// <summary>
         /// TIPS_CD
         /// </summary>
-        public AddressObjectTypeEnum TypeCD { get; set; }
+        public LocationTypeEnum Type { get; set; }
 
         /// <summary>
         /// NOSAUKUMS
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// VKUR_CD
         /// </summary>
-        public int AddressObjectCode { get; set; }
+        public int LocationCode { get; set; }
 
         /// <summary>
         /// VKUR_TIPS
         /// </summary>
-        public AddressObjectTypeEnum AddressObjectTypeCode { get; set; }
+        public LocationTypeEnum LocationType { get; set; }
 
         /// <summary>
         /// STD
         /// </summary>
-        public string? AddressObjectDescription { get; set; }
+        public string GeoAddress { get; set; }
 
         /// <summary>
         /// KOORD_X
         /// </summary>
-        public decimal CentroidXCoordinate { get; set; }
+        public decimal Long { get; set; }
 
         /// <summary>
         /// KOORD_Y 
         /// </summary>
-        public decimal CentroidYCoordinate { get; set; }
+        public decimal Lat { get; set; }
 
         /// <summary>
         /// DD_E
         /// </summary>
-        public decimal CentroidDDECoordinate { get; set; }
+        public decimal DDE { get; set; }
 
         /// <summary>
         /// DD_N
         /// </summary>
-        public decimal CentroidDDNCoordinate { get; set; }
+        public decimal DDN { get; set; }
     }
 }
