@@ -1,4 +1,7 @@
-﻿using MVC_leaflet.Enums;
+﻿using AutoMapper;
+using MVC_leaflet.DB;
+using MVC_leaflet.Enums;
+using MVC_leaflet.Mapping;
 
 namespace MVC_leaflet.Models
 {
@@ -7,7 +10,7 @@ namespace MVC_leaflet.Models
     /// This table is referenced in section 2.2.17 of the documentation.
     /// Documentation Link: https://www.vzd.gov.lv/lv/media/6149/download?attachment 
     /// </summary>
-    public class CentroidDataDto
+    public class CentroidDataDto : IMapFrom<Place>
     {
         /// <summary>
         /// Centroid Id
@@ -63,5 +66,10 @@ namespace MVC_leaflet.Models
         /// DD_N
         /// </summary>
         public decimal DDN { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Place, CentroidDataDto>();
+        }
     }
 }

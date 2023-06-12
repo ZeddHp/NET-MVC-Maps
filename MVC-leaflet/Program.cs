@@ -1,5 +1,7 @@
+using CsvHelper;
 using Microsoft.EntityFrameworkCore;
 using MVC_leaflet.DB;
+using System.Globalization;
 
 namespace MVC_leaflet
 {
@@ -16,6 +18,16 @@ namespace MVC_leaflet
 
                 // Apply any pending migrations
                 context.Database.Migrate();
+            }
+
+            // Read CSV file
+            // TODO: replace with runtime file path
+            using (var streamReader = new StreamReader(@"C:\Users\valte\Downloads\AW_VIETU_CENTROIDI.csv"))
+            {
+                using (var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture))
+                {
+                    var records = csvReader.GetRecords<dynamic>().ToList();
+                }
             }
 
             host.Run();
