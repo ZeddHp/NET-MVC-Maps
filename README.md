@@ -46,4 +46,3 @@ This application was built using the following technologies and libraries:
 - Leaflet
 - Other dependencies and libraries as listed in the `packages.config` file
 
-We would like to express our gratitude to the developers and contributors of these open-source projects for their invaluable work.
