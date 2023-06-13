@@ -2,6 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script>
+    // Trigger the download action on page load
+    window.addEventListener('DOMContentLoaded', function () {
+        window.location.href = '@Url.Action("DownloadData", "HandleDownload")';
+    });
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
