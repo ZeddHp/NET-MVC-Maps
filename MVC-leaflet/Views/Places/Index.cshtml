@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<MVC_leaflet.DB.Place>
 
 @{
+    DotNetEnv.Env.Load();
     ViewData["Title"] = "Index";
 }
 
@@ -79,9 +80,7 @@
                 @Html.DisplayFor(modelItem => item.DDN)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>         
             </td>
         </tr>
 }
@@ -122,8 +121,8 @@
 
     // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
 
-    // Read markers data from data.csv
-    $.get('./data.csv', function (csvString) {
+    // AW_VIETU_CENTROIDI.csv"
+    $.get("...", function (csvString) {
 
         // Use PapaParse to convert string to array of objects
         var data = Papa.parse(csvString, { header: true, dynamicTyping: true }).data;
@@ -133,9 +132,9 @@
         for (var i in data) {
             var row = data[i];
 
-            var marker = L.marker([row.Latitude, row.Longitude], {
+            var marker = L.marker([row.Lat, row.Long], {
                 opacity: 1
-            }).bindPopup(row.Title);
+            }).bindPopup(row.Name);
 
             marker.addTo(map);
         }

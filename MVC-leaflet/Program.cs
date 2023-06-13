@@ -1,6 +1,7 @@
 using CsvHelper;
 using Microsoft.EntityFrameworkCore;
 using MVC_leaflet.DB;
+using MVC_leaflet.Seeding;
 using System.Globalization;
 
 namespace MVC_leaflet
@@ -18,17 +19,23 @@ namespace MVC_leaflet
 
                 // Apply any pending migrations
                 context.Database.Migrate();
+
+                // couldnt get csv reader to work
+                if (!DataSeeder.IsSeeded(context))
+                {
+                    DataSeeder.SeedData(context);
+                }
             }
 
             // Read CSV file
             // TODO: replace with runtime file path
-            using (var streamReader = new StreamReader(@"C:\Users\valte\Downloads\AW_VIETU_CENTROIDI.csv"))
-            {
-                using (var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture))
-                {
-                    var records = csvReader.GetRecords<dynamic>().ToList();
-                }
-            }
+            //using (var streamReader = new StreamReader(@"C:\Users\valte\Downloads\AW_VIETU_CENTROIDI.csv"))
+            //{
+            //    using (var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture))
+            //    {
+            //        var records = csvReader.GetRecords<Place>().ToList();
+            //    }
+            //}
 
             host.Run();
         }

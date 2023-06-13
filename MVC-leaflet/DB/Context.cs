@@ -9,6 +9,8 @@ namespace MVC_leaflet.DB
         }
         public DbSet<Place> Places { get; set; }
 
+        public DbSet<SeedingMarker> SeedingMarkers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -18,9 +18,8 @@ namespace MVC_leaflet
 
             string path = Directory.GetCurrentDirectory();
 
-
-            string connectionString =
-                $@"Server=localhost\SQLEXPRESS;Database=PlaceDB;Trusted_Connection=True;Encrypt=False;AttachDbFileName={path}\PlaceDB.mdf";
+            DotNetEnv.Env.Load();
+            string connectionString = $@"Server=localhost\SQLEXPRESS;Database=PlaceDB;Trusted_Connection=True;Encrypt=False;AttachDbFileName={path}\PlaceDB.mdf";
 
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(connectionString));

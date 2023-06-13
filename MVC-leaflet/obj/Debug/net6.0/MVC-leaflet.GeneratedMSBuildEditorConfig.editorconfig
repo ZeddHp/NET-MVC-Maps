@@ -24,16 +24,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2VzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/valte/source/repos/MVC-leaflet/MVC-leaflet/Views/Places/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2VzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/valte/source/repos/MVC-leaflet/MVC-leaflet/Views/Places/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2VzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/valte/source/repos/MVC-leaflet/MVC-leaflet/Views/Places/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/valte/source/repos/MVC-leaflet/MVC-leaflet/Views/Places/Index.cshtml]
