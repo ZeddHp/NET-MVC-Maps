@@ -39,7 +39,6 @@ namespace MVC_leaflet.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("GeoAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Lat")
@@ -55,7 +54,6 @@ namespace MVC_leaflet.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")

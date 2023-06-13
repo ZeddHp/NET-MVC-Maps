@@ -7,8 +7,10 @@ C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\MVC-leaflet
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\MVC-leaflet.runtimeconfig.json
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\MVC-leaflet.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\MVC-leaflet.pdb
+C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\CsvHelper.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\DotNetEnv.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\Humanizer.dll
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\MessagePack.dll
@@ -290,4 +292,3 @@ C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\refint\MVC-
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\MVC-leaflet.pdb
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\MVC-leaflet.genruntimeconfig.cache
 C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\obj\Debug\net6.0\ref\MVC-leaflet.dll
-C:\Users\valte\source\repos\MVC-leaflet\MVC-leaflet\bin\Debug\net6.0\CsvHelper.dll

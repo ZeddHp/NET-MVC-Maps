@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_leaflet.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230612040716_init")]
+    [Migration("20230613041809_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -42,7 +42,6 @@ namespace MVC_leaflet.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("GeoAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Lat")
@@ -58,7 +57,6 @@ namespace MVC_leaflet.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")

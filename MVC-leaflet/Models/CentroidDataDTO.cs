@@ -30,7 +30,7 @@ namespace MVC_leaflet.Models
         /// <summary>
         /// NOSAUKUMS
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// VKUR_CD
@@ -45,7 +45,7 @@ namespace MVC_leaflet.Models
         /// <summary>
         /// STD
         /// </summary>
-        public string GeoAddress { get; set; }
+        public string? GeoAddress { get; set; }
 
         /// <summary>
         /// KOORD_X
@@ -67,9 +67,9 @@ namespace MVC_leaflet.Models
         /// </summary>
         public decimal DDN { get; set; }
 
-        public void Mapping(Profile profile)
-        {
-            profile.CreateMap<Place, CentroidDataDto>();
-        }
+        //public void Mapping(Profile profile)
+        //{
+        //    profile.CreateMap<Place, CentroidDataDto>();
+        //}
     }
 }
