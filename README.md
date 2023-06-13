@@ -35,27 +35,7 @@ To run the application, follow these steps:
 5. Once the application is running, you can access it by navigating to the specified URL in your preferred web browser.
 
 ## Usage
-
-Upon accessing the application, you will be presented with a map interface powered by Leaflet. The map will display geographic data markers or layers depending on the configured settings.
-
-Use the available controls and options to interact with the map, such as zooming in/out, panning, and toggling different layers or markers. Additional functionalities may be available depending on the specific implementation and customization of the application.
-
-## Contributing
-
-If you would like to contribute to this project, please follow these steps:
-
-1. Fork the repository and clone it to your local machine.
-
-2. Make the necessary changes and additions.
-
-3. Test your changes to ensure they work as intended.
-
-4. Commit your changes and push them to your forked repository.
-
-5. Submit a pull request, describing the changes you have made and any additional relevant information.
-
-We appreciate your contributions to making this project even better!
-
+...
 
 ## Acknowledgements
 
