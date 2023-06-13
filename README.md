@@ -8,7 +8,7 @@ This repository contains the code for a .NET MVC application that utilizes the L
 
 Before running the application, please ensure that you have completed the following steps:
 
-1. **Check Database Connection Strings**: Open the `Web.config` file in the project root and verify that the connection strings for your database are correctly configured. Make any necessary adjustments to match your database setup.
+1. **Check Database Connection Strings**
 
 2. **Generate Initial Migrations**: If you haven't already generated the initial migrations for the database, you need to run the following commands in the Package Manager Console (PMC) within Visual Studio:
 
