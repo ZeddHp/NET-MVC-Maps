@@ -9,7 +9,8 @@ This .NET web application allows you to download a zip file from a URL, process 
 - Map Visualization: Visualize the processed data on an interactive map using Leaflet.js.
 - Furthest Points: Display the four furthest points in each cardinal direction (North, East, South, West) on the map.
 
-  ![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/3763a900-467c-44e7-9271-2d4c36235550)
+ ![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/1ff9abe3-862b-4197-89c2-183318c7186d)
+
 
 
 ## Installation
