@@ -1,48 +1,19 @@
-# NET-MVC-Map Application with Leaflet Library
-![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/10f8d101-3f92-4b1a-8936-3f0f415d3edc)
-![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/19ebb2f9-626a-445c-a4b4-b7042142aa62)
-![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/4d83e098-bce6-4427-8383-21a82cd5af14)
+# .NET Web Application
 
-This repository contains the code for a .NET MVC application that utilizes the Leaflet library to display interactive maps. The application allows users to visualize and explore geographic data.
+This .NET web application allows you to download a zip file from a URL, process the CSV file contained within the zip file, and visualize the data on a map using the Leaflet.js library.
 
-## Setup
+## Features
 
-Before running the application, please ensure that you have completed the following steps:
+- Zip File Download: Download a zip file from a provided URL.
+- CSV File Processing: Extract and process the CSV file.
+- Map Visualization: Visualize the processed data on an interactive map using Leaflet.js.
+- Furthest Points: Display the four furthest points in each cardinal direction (North, East, South, West) on the map.
 
-1. **Check Database Connection Strings**
+  ![image](https://github.com/ZeddHp/NET-MVC-Maps/assets/68005483/3763a900-467c-44e7-9271-2d4c36235550)
 
-2. **Generate Initial Migrations**: If you haven't already generated the initial migrations for the database, you need to run the following commands in the Package Manager Console (PMC) within Visual Studio:
 
-   ```
-   PM> Enable-Migrations
-   PM> Add-Migration InitialCreate
-   PM> Update-Database
-   ```
+## Installation
 
-   These commands will enable migrations, create the initial migration script based on your database models, and apply the changes to the database.
-
-## Running the Application
-
-To run the application, follow these steps:
-
-1. Open the solution file (`NET-MVC-Map.sln`) in Visual Studio.
-
-2. Build the solution to restore NuGet packages and compile the code.
-
-3. Set the startup project to the `NET-MVC-Map` project.
-
-4. Press **F5** or click on the **Start** button to launch the application.
-
-5. Once the application is running, you can access it by navigating to the specified URL in your preferred web browser.
-
-## Usage
-...
-
-## Acknowledgements
-
-This application was built using the following technologies and libraries:
-
-- .NET MVC
-- Leaflet
-- Other dependencies and libraries as listed in the `packages.config` file
-
+1. Clone the repository or download the source code.
+2. Open the solution in a compatible IDE or text editor.
+3. Build the solution to restore packages and compile the application.
