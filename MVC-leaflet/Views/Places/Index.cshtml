@@ -1,143 +1,163 @@
-﻿@model IEnumerable<MVC_leaflet.DB.Place>
-
-@{
+﻿@{
+    @model IEnumerable<MVC_leaflet.Models.Place>
     DotNetEnv.Env.Load();
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div id="map"> </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GeoAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Long)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DDE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DDN)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeoAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Long)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DDE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DDN)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>         
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-<script src="~/lib/leaflet/leaflet.js"></script>
-<script src="~/lib/leaflet/leaflet.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<div id="map" style="width: 100%; height: 400px;"></div>
-<script>
-    var map = L.map('map', {
-        center: [56.946285, 24.105078], // EDIT latitude, longitude to re-center map
-        zoom: 9,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
-        scrollWheelZoom: false,
-        tap: false
-    });
-
-    /* Control panel to display map layers */
-    var controlLayers = L.control.layers(null, null, {
-        position: "topright",
-        collapsed: false
-    }).addTo(map);
-
-    // display Carto basemap tiles with light features and labels
-    var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
-    }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
-    controlLayers.addBaseLayer(light, 'Carto Light basemap');
-
-    /* Stamen colored terrain basemap tiles with labels */
-    var terrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-    }); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
-    controlLayers.addBaseLayer(terrain, 'Stamen Terrain basemap');
-
-    // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
-
-    // AW_VIETU_CENTROIDI.csv"
-    $.get("...", function (csvString) {
-
-        // Use PapaParse to convert string to array of objects
-        var data = Papa.parse(csvString, { header: true, dynamicTyping: true }).data;
-
-        // For each row in data, create a marker and add it to the map
-        // For each row, columns `Latitude`, `Longitude`, and `Title` are required
-        for (var i in data) {
-            var row = data[i];
-
-            var marker = L.marker([row.Lat, row.Long], {
-                opacity: 1
-            }).bindPopup(row.Name);
-
-            marker.addTo(map);
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
         }
-    });
 
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<script>
+    (function () {
+        var map, controlLayers, jsModel, furthestCitiesGroup, northCity, eastCity, southCity, westCity;
+
+        function initializeMap() {
+            map = L.map('map', {
+                center: [56.946285, 24.105078], // EDIT latitude, longitude to re-center map
+                zoom: 8,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+                scrollWheelZoom: false,
+                tap: false
+            });
+
+            controlLayers = L.control.layers(null, null, {
+                position: "topright",
+                collapsed: false
+            }).addTo(map);
+
+            var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+            }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+            controlLayers.addBaseLayer(light, 'Carto Light basemap');
+
+            var terrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+            }); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+            controlLayers.addBaseLayer(terrain, 'Stamen Terrain basemap');
+        }
+
+        function calculateFurthestCities() {
+            var furthestDistance = 0;
+            var furthestCities = [];
+            var northDistance = -Infinity;
+            var southDistance = -Infinity;
+            var eastDistance = -Infinity;
+            var westDistance = -Infinity;
+
+            for (var i = 0; i < jsModel.length - 1; i++) {
+                var city1 = jsModel[i];
+
+                for (var j = i + 1; j < jsModel.length; j++) {
+                    var city2 = jsModel[j];
+                    var distance = calculateDistance(city1.dde, city1.ddn, city2.dde, city2.ddn);
+
+                    if (distance > furthestDistance) {
+                        furthestDistance = distance;
+                        furthestCities = [city1.name, city2.name];
+                    }
+
+                    // Check north
+                    if (city2.ddn > city1.ddn && city2.ddn - city1.ddn > northDistance) {
+                        northDistance = city2.ddn - city1.ddn;
+                        northCity = [city1.name, city2.name];
+                    }
+
+                    // Check south
+                    if (city2.ddn < city1.ddn && city1.ddn - city2.ddn > southDistance) {
+                        southDistance = city1.ddn - city2.ddn;
+                        southCity = [city1.name, city2.name];
+                    }
+
+                    // Check east
+                    if (city2.dde > city1.dde && city2.dde - city1.dde > eastDistance) {
+                        eastDistance = city2.dde - city1.dde;
+                        eastCity = [city1.name, city2.name];
+                    }
+
+                    // Check west
+                    if (city2.dde < city1.dde && city1.dde - city2.dde > westDistance) {
+                        westDistance = city1.dde - city2.dde;
+                        westCity = [city1.name, city2.name];
+                    }
+                }
+            }
+
+            furthestCitiesGroup = L.layerGroup().addTo(map);
+
+            for (var i = 0; i < jsModel.length; i++) {
+                var item = jsModel[i];
+                var marker = L.marker([item.dde, item.ddn]).bindPopup(item.name);
+
+                if (item.name === furthestCities[0] || item.name === furthestCities[1]) {
+                    marker.addTo(furthestCitiesGroup);
+                }
+
+                // Add markers for furthest cities in each direction
+                if (westCity.includes(item.name)) {
+                    marker.addTo(map);
+                }
+            }
+
+            map.fitBounds(furthestCitiesGroup.getBounds());
+        }
+
+        function calculateDistance(dde1, ddn1, dde2, ddn2) {
+            var R = 6371; // Radius of the Earth in km
+            var dLat = deg2rad(dde2 - dde1);
+            var dLon = deg2rad(ddn2 - ddn1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(dde1)) * Math.cos(deg2rad(dde2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var distance = R * c;
+            return distance;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+
+        function displayMarkers() {
+            for (var i = 0; i < 10 && i < jsModel.length; i++) {
+                var item = jsModel[i];
+                L.marker([item.dde, item.ddn]).addTo(map)
+                    .bindPopup(item.name)
+                    .openPopup();
+            }
+        }
+
+        function loadMapData() {
+            jsModel = @Html.Raw(Json.Serialize(Model));
+            console.log(jsModel);
+        }
+
+        function init() {
+            initializeMap();
+            loadMapData();
+            calculateFurthestCities();
+            displayMarkers();
+        }
+
+        init();
+    })();
 </script>

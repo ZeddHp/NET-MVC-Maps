@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Converters;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace MVC_leaflet.Enums
@@ -9,7 +8,7 @@ namespace MVC_leaflet.Enums
     /// <para> This table is referenced in attachments section 1. </para>
     /// <para> Documentation Link: https://www.vzd.gov.lv/lv/media/6149/download?attachment </para>
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum LocationTypeEnum
     {
         /// <summary>
