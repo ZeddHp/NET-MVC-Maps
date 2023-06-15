@@ -34,27 +34,28 @@ namespace MVC_Location_Seach.Controllers
                             }
 
                             // Extract the ZIP file
-                            string extractPath = Path.Combine(Directory.GetCurrentDirectory()+"/App_Data");
+                            string extractPath = Path.Combine(Directory.GetCurrentDirectory() + "/App_Data");
                             ZipFile.ExtractToDirectory(zipPath, extractPath);
 
-                            // Cleanup: Delete the downloaded ZIP file
                             System.IO.File.Delete(zipPath);
 
-                            // Return a success message
-                            return Content("ZIP file extracted successfully.");
+                            // TODO: Add code to read the CSV file and insert data into the database
+                            return LocalRedirectPermanent("/Places");
                         }
                     }
                     else
                     {
+                        string zipPath = Path.Combine(Directory.GetCurrentDirectory(), filename);
+                        System.IO.File.Delete(zipPath);
                         // Handle unsuccessful response
-                        return Content("Error occurred while downloading the ZIP file.");
+                        return LocalRedirectPermanent("/Places");
                     }
                 }
             }
             catch (Exception ex)
             {
                 // Handle or log the exception
-                return Content("Error occurred while downloading or extracting the ZIP file.");
+                return LocalRedirectPermanent("/Places");
             }
         }
     }

@@ -1,21 +1,17 @@
-﻿using AutoMapper;
-using MVC_leaflet.DB;
+﻿using CsvHelper.Configuration.Attributes;
+using MessagePack;
 using MVC_leaflet.Enums;
-using MVC_leaflet.Mapping;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_leaflet.Models
 {
-    /// <summary>
-    /// AW_VIETA_CENTROIDS
-    /// This table is referenced in section 2.2.17 of the documentation.
-    /// Documentation Link: https://www.vzd.gov.lv/lv/media/6149/download?attachment 
-    /// </summary>
-    public class CentroidDataDto : IMapFrom<Place>
+    public class Place
     {
         /// <summary>
         /// Centroid Id
         /// </summary>
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// KODS
@@ -30,7 +26,7 @@ namespace MVC_leaflet.Models
         /// <summary>
         /// NOSAUKUMS
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// VKUR_CD
@@ -45,7 +41,7 @@ namespace MVC_leaflet.Models
         /// <summary>
         /// STD
         /// </summary>
-        public string? GeoAddress { get; set; }
+        public string GeoAddress { get; set; }
 
         /// <summary>
         /// KOORD_X
@@ -66,10 +62,5 @@ namespace MVC_leaflet.Models
         /// DD_N
         /// </summary>
         public decimal DDN { get; set; }
-
-        //public void Mapping(Profile profile)
-        //{
-        //    profile.CreateMap<Place, CentroidDataDto>();
-        //}
     }
 }

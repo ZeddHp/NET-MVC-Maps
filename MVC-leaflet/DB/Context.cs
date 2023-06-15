@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MVC_leaflet.Models;
 
 namespace MVC_leaflet.DB
 {
@@ -9,15 +10,12 @@ namespace MVC_leaflet.DB
         }
         public DbSet<Place> Places { get; set; }
 
-        public DbSet<SeedingMarker> SeedingMarkers { get; set; }
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer
-            (
-                @"Server=localhost\SQLEXPRESS;Database=PlaceDB;Trusted_Connection=True;Encrypt=False"
-            );
+            optionsBuilder
+                .EnableSensitiveDataLogging()
+                .UseInMemoryDatabase(databaseName: "PlacesDb");
         }
+
     }
 }

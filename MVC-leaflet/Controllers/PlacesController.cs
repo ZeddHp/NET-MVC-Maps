@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CsvHelper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVC_leaflet.DB;
+using MVC_leaflet.Interfaces;
+using MVC_leaflet.Services;
 
 namespace MVC_leaflet.Controllers
 {
     public class PlacesController : Controller
     {
         private readonly Context _context;
+
 
         public PlacesController(Context context)
         {
@@ -22,7 +26,7 @@ namespace MVC_leaflet.Controllers
         }
 
         // GET: Places/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null || _context.Places == null)
             {
@@ -39,117 +43,7 @@ namespace MVC_leaflet.Controllers
             return View(place);
         }
 
-        // GET: Places/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Places/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Type,Name,LocationCode,LocationType,GeoAddress,Long,Lat,DDE,DDN")] Place place)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(place);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(place);
-        }
-
-        // GET: Places/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Places == null)
-            {
-                return NotFound();
-            }
-
-            var place = await _context.Places.FindAsync(id);
-            if (place == null)
-            {
-                return NotFound();
-            }
-            return View(place);
-        }
-
-        // POST: Places/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Type,Name,LocationCode,LocationType,GeoAddress,Long,Lat,DDE,DDN")] Place place)
-        {
-            if (id != place.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(place);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlaceExists(place.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(place);
-        }
-
-        // GET: Places/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Places == null)
-            {
-                return NotFound();
-            }
-
-            var place = await _context.Places
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (place == null)
-            {
-                return NotFound();
-            }
-
-            return View(place);
-        }
-
-        // POST: Places/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Places == null)
-            {
-                return Problem("Entity set 'Context.Places'  is null.");
-            }
-            var place = await _context.Places.FindAsync(id);
-            if (place != null)
-            {
-                _context.Places.Remove(place);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PlaceExists(int id)
+        private bool PlaceExists(Guid id)
         {
             return (_context.Places?.Any(e => e.Id == id)).GetValueOrDefault();
         }

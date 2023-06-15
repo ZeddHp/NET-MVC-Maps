@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MVC_leaflet.DB;
+using MVC_leaflet.Interfaces;
+using MVC_leaflet.Services;
 
 namespace MVC_leaflet
 {
@@ -16,13 +18,16 @@ namespace MVC_leaflet
         {
             services.AddControllersWithViews();
 
-            string path = Directory.GetCurrentDirectory();
-
-            DotNetEnv.Env.Load();
-            string connectionString = $@"Server=localhost\SQLEXPRESS;Database=PlaceDB;Trusted_Connection=True;Encrypt=False;AttachDbFileName={path}\PlaceDB.mdf";
+            //services.AddDbContext<Context>(options =>
+            //               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<Context>(options =>
-                options.UseSqlServer(connectionString));
+                           options.UseInMemoryDatabase(databaseName: "PlacesDb"));
+
+            services.AddHttpClient();
+
+            services.AddScoped<IDataService, DataService>();
+            services.AddScoped<IDatabasePopulator, DatabasePopulator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,6 +48,12 @@ namespace MVC_leaflet
             app.UseRouting();
 
             app.UseAuthorization();
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var databasePopulator = scope.ServiceProvider.GetRequiredService<IDatabasePopulator>();
+                databasePopulator.PopulateDatabase();
+            }
 
             app.UseEndpoints(endpoints =>
             {
